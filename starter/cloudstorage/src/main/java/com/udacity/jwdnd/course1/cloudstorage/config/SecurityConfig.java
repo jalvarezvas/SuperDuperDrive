@@ -24,30 +24,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .anyRequest()
                 .authenticated();
+
         http.csrf().disable();
+
         http.headers().frameOptions().disable();
+
         http.formLogin()
                 .loginPage("/login")
                 .permitAll();
+
         http.formLogin()
                 .defaultSuccessUrl("/home", true);
     }
 
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
-//        http.authorizeRequests()
-//                .antMatchers("/h2/**", "/signup", "/css/**", "/js/**")  // TODO: QUITAR "/h2/**", SI FINALEMENTE NO ES NECESARIO
-//                .permitAll().anyRequest().authenticated();
-//
-//        http.formLogin()
-//                .loginPage("/login")
-//                .permitAll();
-//
-//        http.formLogin()
-//                .defaultSuccessUrl("/home", true);
-//
-//        http.csrf().disable(); // To see H2 tables  // TODO: QUITAR "/h2/**", SI FINALEMENTE NO ES NECESARIO
-//
-//        http.headers().frameOptions().disable(); // To see H2 tables    // TODO: QUITAR "/h2/**", SI FINALEMENTE NO ES NECESARIO
-//    }
 }
