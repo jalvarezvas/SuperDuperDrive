@@ -21,11 +21,6 @@ public class CredentialService {
     public List<Credential> getCredentials(Integer userID) {
         List<Credential> credentials = credentialMapper.getCredentials(userID);
 
-        for (Credential credential : credentials) {
-            credential.setEncryptedPassword(credential.getPassword());
-            credential.setPassword(encryptionService.decryptValue(credential.getPassword(), credential.getKey()));
-        }
-
         return credentials;
     }
 
@@ -37,7 +32,7 @@ public class CredentialService {
         String encryptedPassword = encryptionService.encryptValue(credential.getPassword(), encodedKey);
 
         return credentialMapper.insert(
-                new Credential(null, credential.getUrl(), credential.getUsername(), encodedKey, encryptedPassword, null, credential.getUserId())
+                new Credential(null, credential.getUrl(), credential.getUsername(), encodedKey, encryptedPassword, credential.getUserId())
         );
     }
 

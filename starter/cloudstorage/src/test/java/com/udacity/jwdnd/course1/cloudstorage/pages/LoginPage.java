@@ -13,7 +13,7 @@ public class LoginPage {
     @FindBy(id="inputPassword")
     private WebElement passwordField;
 
-    @FindBy(id="credentialSubmit")
+    @FindBy(id="submit-button")
     private WebElement submitButton;
 
     public LoginPage(WebDriver webDriver) {
