@@ -86,9 +86,7 @@ class CloudStorageApplicationTests {
         Assertions.assertEquals("Sign Up", driver.getTitle());
         SignupPage signupPage = new SignupPage(driver);
         signupPage.signup(firstname, lastname, username, password);
-        Assertions.assertEquals("You successfully signed up! Please continue to the login page.", signupPage.getSuccessMessage());
-
-        signupPage.goToLoginLink();
+        Assertions.assertEquals("You successfully signed up! Please login to continue.", signupPage.getSuccessMessage());
         Assertions.assertEquals("Login", driver.getTitle());
 
 

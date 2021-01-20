@@ -42,7 +42,10 @@ public class SignupController {
         }
 
         if (signupError == null) {
+
+            // SUGGESTION: We can directly redirect to the login page on successful registration.
             model.addAttribute("signupSuccess", true);
+            return "login"; // model.addAttribute("signupSuccess", true);
         } else {
             model.addAttribute("signupError", signupError);
         }
